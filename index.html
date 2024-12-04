@@ -9,20 +9,20 @@
   <div id="map" style="height: 1200px;"></div>
   <script>
     // Initialiser la carte
-    var map = L.map('map').setView([51.045154, 2.303977], 13); // Coordonnées de Paris
+    var map = L.map('map').setView([51.029827, 2.318048], 13); // Coordonnées de Paris
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19
     }).addTo(map);
 
     // Ajouter un marqueur
-    var marker = L.marker([51.045154, 2.303977]).addTo(map);
+    var marker = L.marker([51.029827, 2.318048]).addTo(map);
 
     // Ajouter un triangle
     var triangleCoords = [
-      [51.045154, 2.303977], // Premier point (sommet du triangle)
+      [51.029827, 2.318048], // Premier point (sommet du triangle)
       [51.045154, 2.31], // Deuxième point
       [51.05, 2.32], // Troisième point
-      [51.045154, 2.303977]  // Retour au premier point pour fermer le polygone
+      [51.029827, 2.318048]  // Retour au premier point pour fermer le polygone
     ];
 
     var triangle = L.polygon(triangleCoords, {
@@ -33,10 +33,10 @@
 
     // Dessiner un cône simulé
     var coneCoords = [
-      [51.045154, 2.303977], // Sommet du cône
+      [51.029827, 2.318048], // Sommet du cône
       [51.05, 2.31], // Bord gauche de la base
       [51.05, 2.32], // Bord droit de la base
-      [51.045154, 2.303977]  // Retour au sommet
+      [51.029827, 2.318048]  // Retour au sommet
     ];
     
     var cone = L.polygon(coneCoords, {
