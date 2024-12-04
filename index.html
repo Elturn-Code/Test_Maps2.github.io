@@ -31,6 +31,20 @@
       fillOpacity: 0.5 // Opacité de remplissage
     }).addTo(map);
 
+    // Dessiner un cône simulé
+    var coneCoords = [
+      [51.045154, 2.303977], // Sommet du cône
+      [51.05, 2.31], // Bord gauche de la base
+      [51.05, 2.32], // Bord droit de la base
+      [51.045154, 2.303977]  // Retour au sommet
+    ];
+    
+    var cone = L.polygon(coneCoords, {
+      color: 'red', // Bordures
+      fillColor: 'orange', // Remplissage
+      fillOpacity: 0.6
+    }).addTo(map);
+    
     // Centrer la vue sur le triangle
     map.fitBounds(triangle.getBounds());
   </script>
