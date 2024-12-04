@@ -17,21 +17,22 @@
     // Ajouter un marqueur
     var marker = L.marker([51.045154, 2.303977]).addTo(map);
 
-    // Simuler un mouvement (par exemple via des données d'un serveur)
-    let positions = [
-      [48.857, 2.352],
-      [48.858, 2.353],
-      [48.859, 2.354]
+    // Ajouter un triangle
+    var triangleCoords = [
+      [51.045154, 2.303977], // Premier point (sommet du triangle)
+      [51.045154, 2.31], // Deuxième point
+      [51.05, 2.32], // Troisième point
+      [51.045154, 2.303977]  // Retour au premier point pour fermer le polygone
     ];
-    let index = 0;
 
-    setInterval(() => {
-      if (index < positions.length) {
-        marker.setLatLng(positions[index]);
-        map.panTo(positions[index]);
-        index++;
-      }
-    }, 1000);
+    var triangle = L.polygon(triangleCoords, {
+      color: 'blue', // Couleur des bordures
+      fillColor: 'blue', // Couleur de remplissage
+      fillOpacity: 0.5 // Opacité de remplissage
+    }).addTo(map);
+
+    // Centrer la vue sur le triangle
+    map.fitBounds(triangle.getBounds());
   </script>
 </body>
 </html>
