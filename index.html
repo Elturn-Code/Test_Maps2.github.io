@@ -13,6 +13,8 @@
       font-weight: bold;
       border-radius: 5px;
       padding: 5px 10px;
+      width: 20px; /* Largeur fixe */
+      height: 20px; /* Hauteur fixe */
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     }
   </style>
@@ -30,8 +32,8 @@
     var customIcon = L.divIcon({
       className: 'custom-marker',
       html: '11', // Texte à afficher
-      iconSize: [30, 30], // Taille de l'icône (optionnel)
-      iconAnchor: [30, 15] // Point d'ancrage (optionnel)
+      iconSize: [20, 20], // Taille de l'icône (optionnel)
+      iconAnchor: [10, 10] // Point d'ancrage (optionnel)
     });
     
     // Ajouter un marqueur
@@ -75,11 +77,11 @@
     circle.bindPopup("C'est un CircleMarker sur la DTD !");
 
     
-    var cone = L.polygon(coneCoords, {
-      color: 'red', // Bordures
-      fillColor: 'orange', // Remplissage
-      fillOpacity: 0.6
-    }).addTo(map);
+    //var cone = L.polygon(coneCoords, {
+    //  color: 'red', // Bordures
+     // fillColor: 'orange', // Remplissage
+     // fillOpacity: 0.6
+    //}).addTo(map);
 
         // Fonction pour générer un quartier de tarte
     function createPieSlice(center, radius, startAngle, endAngle, numPoints = 100) {
