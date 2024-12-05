@@ -3,6 +3,7 @@
 <head>
   <title>Carte avec Objet Mobile</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY"></script>
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <style>
     /* Style personnalisé pour l'icône */
@@ -57,9 +58,16 @@
     //}).addTo(map);
 
     // Ajouter une couche satellite (Esri)
-    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-      attribution: '© Esri, DigitalGlobe, GeoIQ, NOAA, USGS, and others'
+   // L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+    //  attribution: '© Esri, DigitalGlobe, GeoIQ, NOAA, USGS, and others'
+    //}).addTo(map);
+
+    // Ajouter une couche satellite avec Google Maps
+    L.tileLayer('https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
+      attribution: '© Google Maps',
+      subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
     }).addTo(map);
+
     
     // Ajouter un marqueur avec une icône personnalisée contenant du texte
     var customIcon = L.divIcon({
