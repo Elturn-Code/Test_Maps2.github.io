@@ -40,6 +40,18 @@
       [51.05, 2.32], // Bord droit de la base
       [51.029827, 2.318048]  // Retour au sommet
     ];
+
+        // Ajout d'un CircleMarker
+    var circleMarker = L.circleMarker([51.029827, 2.318048], {
+      radius: 10, // Rayon en pixels
+      color: 'red', // Couleur de la bordure
+      weight: 2, // Épaisseur de la bordure
+      fillColor: 'pink', // Couleur de remplissage
+      fillOpacity: 0.6 // Opacité de remplissage
+    }).addTo(map);
+    // Ajouter un popup au cercle
+    circleMarker.bindPopup("C'est un CircleMarker sur DK !");
+
     
     var cone = L.polygon(coneCoords, {
       color: 'red', // Bordures
