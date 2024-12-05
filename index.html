@@ -4,6 +4,18 @@
   <title>Carte avec Objet Mobile</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <style>
+    /* Style personnalisé pour l'icône */
+    .custom-marker {
+      background-color: #007bff;
+      color: white;
+      font-size: 14px;
+      font-weight: bold;
+      border-radius: 5px;
+      padding: 5px 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+  </style>
 </head>
 <body>
   <div id="map" style="height: 1200px;"></div>
@@ -13,11 +25,21 @@
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19
     }).addTo(map);
-
+    
+    // Ajouter un marqueur avec une icône personnalisée contenant du texte
+    var customIcon = L.divIcon({
+      className: 'custom-marker',
+      html: '11', // Texte à afficher
+      iconSize: [60, 30], // Taille de l'icône (optionnel)
+      iconAnchor: [30, 15] // Point d'ancrage (optionnel)
+    });
+    
     // Ajouter un marqueur
     var marker = L.marker([51.040338, 2.306949]).addTo(map);
     // Ajouter un marqueur
-    var marker = L.marker([51.038969, 2.29598]).addTo(map);
+    //var marker = L.marker([51.038969, 2.29598]).addTo(map);
+    // Ajouter le marqueur à la carte
+    L.marker([51.038969, 2.29598], { icon: customIcon }).addTo(map);
 
     // Ajouter un triangle
     var triangleCoords = [
