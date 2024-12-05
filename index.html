@@ -23,7 +23,7 @@
       color: white;
       text-align: center;
       font-weight: bold;
-      border-radius: 30%;
+      border-radius: 50%;
       line-height: 1;
       box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
       transition: width 0.5s, height 0.5s, font-size 0.5s; /* Animation douce */
@@ -64,7 +64,7 @@
         // Fonction pour générer une icône avec une taille dépendant du zoom
     function createZoomDependentIcon(zoom) {
       // Taille de l'icône calculée dynamiquement
-      const size = Math.max(10, zoom * 5); // Exemple : taille minimale de 10, augmente avec le zoom
+      const size = Math.max(10, zoom * 2); // Exemple : taille minimale de 10, augmente avec le zoom
       const fontSize = size / 3;
 
       return L.divIcon({
