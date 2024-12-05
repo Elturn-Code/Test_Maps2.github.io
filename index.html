@@ -42,7 +42,7 @@
     ];
 
         // Ajout d'un CircleMarker
-    var circleMarker = L.circleMarker([51.040338, 2.306949], {
+    var circle = L.circle([51.040338, 2.306949], {
       radius: 150, // Rayon en pixels
       color: 'red', // Couleur de la bordure
       weight: 4, // Épaisseur de la bordure
@@ -50,7 +50,7 @@
       fillOpacity: 0.6 // Opacité de remplissage
     }).addTo(map);
     // Ajouter un popup au cercle
-    circleMarker.bindPopup("C'est un CircleMarker sur la DTD !");
+    circle.bindPopup("C'est un CircleMarker sur la DTD !");
 
     
     var cone = L.polygon(coneCoords, {
