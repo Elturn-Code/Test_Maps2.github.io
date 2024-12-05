@@ -47,6 +47,8 @@
     // Declaration des variables de position du POI + Longuer Cone/Cercle
     const LAT_POI = 51.040338;
     const LONG_POI = 2.306949;
+    const LONG_CONE_POI = 500;
+    const LONG_CERCLE_POI = 150;
     
     // Initialiser la carte
     var map = L.map('map').setView([LAT_POI, LONG_POI], 13); // Coordonnées de POI
@@ -108,31 +110,9 @@ map.on('locationerror', function(e) {
 });
 
 //----------------------------------------------------------------------------------------------------------------------------
-    // Ajouter un triangle
-    var triangleCoords = [
-      [51.029827, 2.318048], // Premier point (sommet du triangle)
-      [51.045154, 2.31], // Deuxième point
-      [51.05, 2.32], // Troisième point
-      [51.029827, 2.318048]  // Retour au premier point pour fermer le polygone
-    ];
-
-   // var triangle = L.polygon(triangleCoords, {
-    //  color: 'blue', // Couleur des bordures
-    //  fillColor: 'blue', // Couleur de remplissage
-    //  fillOpacity: 0.5 // Opacité de remplissage
-   // }).addTo(map);
-
-    // Dessiner un cône simulé
-    var coneCoords = [
-      [51.040338, 2.306949], // Sommet du cône
-      [51.05, 2.31], // Bord gauche de la base
-      [51.05, 2.32], // Bord droit de la base
-      [51.040338, 2.306949]  // Retour au sommet
-    ];
-
-        // Ajout d'un CircleMarker
+// Ajout d'un CircleMarker
     var circle = L.circle([LAT_POI, LONG_POI], {
-      radius: 150, // Rayon en pixels
+      radius: LONG_CERCLE_POI, // Rayon en pixels
       color: 'red', // Couleur de la bordure
       weight: 4, // Épaisseur de la bordure
       fillColor: 'pink', // Couleur de remplissage
@@ -141,14 +121,7 @@ map.on('locationerror', function(e) {
     // Ajouter un popup au cercle
     circle.bindPopup("C'est un CircleMarker sur la DTD !");
 
-    
-    //var cone = L.polygon(coneCoords, {
-    //  color: 'red', // Bordures
-     // fillColor: 'orange', // Remplissage
-     // fillOpacity: 0.6
-    //}).addTo(map);
-
-        // Fonction pour générer un quartier de tarte
+      // Fonction pour générer un quartier de tarte
     function createPieSlice(center, radius, startAngle, endAngle, numPoints = 100) {
       const points = [];
       const toRad = Math.PI / 180;
@@ -170,10 +143,10 @@ map.on('locationerror', function(e) {
     }
 
     // Coordonnées du centre
-    const center = [51.040338, 2.306949]; // Paris
+    const center = [LAT_POI, LONG_POI]; // POI
 
     // Rayon du quartier de tarte (en mètres)
-    const radius = 500;
+    const radius = LONG_CCONE_POI;
 
     // Angles de début et de fin (en degrés)
     const startAngle = 15; // 30° à partir du Nord
