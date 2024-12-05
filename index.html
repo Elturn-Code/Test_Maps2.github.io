@@ -92,7 +92,7 @@
  //----------------------------------------------------------------------------------------------------------------------------------    
  //Point 11----------------------------------------------------------------------------------------------------------------------------------
     // Ajouter un marqueur à la carte avec une icône dépendant du zoom
-    var marker11 = L11.marker([51.038969, 2.29598], { icon: createZoomDependentIcon(map.getZoom()) }).addTo(map);
+    var marker11 = L.marker([51.038969, 2.29598], { icon: createZoomDependentIcon(map.getZoom()) }).addTo(map);
     // Mettre à jour l'icône lorsque le zoom change
     map.on('zoomend', function () {
       const zoom = map.getZoom();
@@ -104,7 +104,7 @@
       const size = Math.max(10, zoom * 2); // Exemple : taille minimale de 10, augmente avec le zoom
       const fontSize = size / 3;
 
-      return L11.divIcon({
+      return L.divIcon({
         className: 'zoom-dependent-icon',
         html: `<div style="width: ${size}px; height: ${size}px; font-size: ${fontSize}px; line-height: ${size}px;">11</div>`,
         iconSize: [size, size], // Taille dynamique
