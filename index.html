@@ -58,6 +58,48 @@
       fillColor: 'orange', // Remplissage
       fillOpacity: 0.6
     }).addTo(map);
+
+        // Fonction pour générer un quartier de tarte
+    function createPieSlice(center, radius, startAngle, endAngle, numPoints = 100) {
+      const points = [];
+      const toRad = Math.PI / 180;
+
+      // Ajouter le point central (optionnel si vous ne voulez pas un triangle fermé)
+      points.push(center);
+
+      // Générer les points du bord de l'arc
+      for (let i = startAngle; i <= endAngle; i += (endAngle - startAngle) / numPoints) {
+        const lat = center[0] + (radius / 111300) * Math.cos(i * toRad);
+        const lng = center[1] + (radius / 111300) * Math.sin(i * toRad) / Math.cos(center[0] * toRad);
+        points.push([lat, lng]);
+      }
+
+      // Retourner au centre pour fermer le polygone
+      points.push(center);
+
+      return points;
+    }
+
+    // Coordonnées du centre
+    const center = [51.040338, 2.306949]; // Paris
+
+    // Rayon du quartier de tarte (en mètres)
+    const radius = 150;
+
+    // Angles de début et de fin (en degrés)
+    const startAngle = 30; // 30° à partir du Nord
+    const endAngle = 120;  // 120° à partir du Nord
+
+    // Créer un quartier de tarte
+    const pieSliceCoords = createPieSlice(center, radius, startAngle, endAngle);
+
+    // Ajouter le quartier de tarte à la carte
+    L.polygon(pieSliceCoords, {
+      color: 'blue', // Couleur de bordure
+      fillColor: 'cyan', // Couleur de remplissage
+      fillOpacity: 0.5 // Opacité de remplissage
+    }).addTo(map);
+
     
     // Centrer la vue sur le triangle
     map.fitBounds(triangle.getBounds());
