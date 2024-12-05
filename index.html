@@ -109,10 +109,10 @@
     // Mettre à jour l'icône lorsque le zoom change
     map.on('zoomend', function () {
       const zoom = map.getZoom();
-      marker11.setIcon(createZoomDependentIcon(zoom));
+      marker11.setIcon(createZoomDependentIcon11(zoom));
     });
         // Fonction pour générer une icône avec une taille dépendant du zoom
-    function createZoomDependentIcon(zoom) {
+    function createZoomDependentIcon11(zoom) {
       // Taille de l'icône calculée dynamiquement
       const size = Math.max(10, zoom * 2); // Exemple : taille minimale de 10, augmente avec le zoom
       const fontSize = size / 3;
