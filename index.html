@@ -52,8 +52,13 @@
     
     // Initialiser la carte
     var map = L.map('map').setView([LAT_POI, LONG_POI], 13); // Coordonnées de POI
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 19
+    //L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    //  maxZoom: 19
+    //}).addTo(map);
+
+    // Ajouter une couche satellite (Esri)
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+      attribution: '© Esri, DigitalGlobe, GeoIQ, NOAA, USGS, and others'
     }).addTo(map);
     
     // Ajouter un marqueur avec une icône personnalisée contenant du texte
