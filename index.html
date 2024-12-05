@@ -28,10 +28,21 @@
       box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
       transition: width 0.5s, height 0.5s, font-size 0.5s; /* Animation douce */
     }
+       /* Rendre la carte pleine largeur et hauteur de l'écran */
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%; /* Nécessaire pour que le body prenne toute la hauteur */
+    }
+
+    #map {
+      width: 100vw; /* Largeur 100% de la fenêtre */
+      height: 100vh; /* Hauteur 100% de la fenêtre */
+    }
   </style>
 </head>
 <body>
-  <div id="map" style="height: 1200px;"></div>
+  <div id="map"></div>
   <script>
     // Initialiser la carte
     var map = L.map('map').setView([51.040338, 2.306949], 13); // Coordonnées de Paris
