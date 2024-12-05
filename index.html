@@ -64,13 +64,11 @@
       iconAnchor: [10, 10] // Point d'ancrage (optionnel)
     });
     
-    // Ajouter un marqueur
-    var marker = L.marker([51.040338, 2.306949]).addTo(map);
-    // Ajouter un marqueur
-    //var marker = L.marker([51.038969, 2.29598]).addTo(map);
+    // Ajouter un marqueur pour emplacement du POI
+    var marker = L.marker([LAT_POI, LONG_POI]).addTo(map);
     // Ajouter le marqueur à la carte
-    L.marker([51.038969, 2.29598], { icon: customIcon }).addTo(map);
- //----------------------------------------------------------------------------------------------------------------------------------
+    // L.marker([51.038969, 2.29598], { icon: customIcon }).addTo(map);
+ // Point 12----------------------------------------------------------------------------------------------------------------------------------
     // Ajouter un marqueur à la carte avec une icône dépendant du zoom
     var marker = L.marker([51.043818, 2.303612], { icon: createZoomDependentIcon(map.getZoom()) }).addTo(map);
     // Mettre à jour l'icône lorsque le zoom change
@@ -92,7 +90,28 @@
       });
     }
  //----------------------------------------------------------------------------------------------------------------------------------    
+ //Point 11----------------------------------------------------------------------------------------------------------------------------------
+    // Ajouter un marqueur à la carte avec une icône dépendant du zoom
+    var marker = L.marker([51.038969, 2.29598], { icon: createZoomDependentIcon(map.getZoom()) }).addTo(map);
+    // Mettre à jour l'icône lorsque le zoom change
+    map.on('zoomend', function () {
+      const zoom = map.getZoom();
+      marker.setIcon(createZoomDependentIcon(zoom));
+    });
+        // Fonction pour générer une icône avec une taille dépendant du zoom
+    function createZoomDependentIcon(zoom) {
+      // Taille de l'icône calculée dynamiquement
+      const size = Math.max(10, zoom * 2); // Exemple : taille minimale de 10, augmente avec le zoom
+      const fontSize = size / 3;
 
+      return L.divIcon({
+        className: 'zoom-dependent-icon',
+        html: `<div style="width: ${size}px; height: ${size}px; font-size: ${fontSize}px; line-height: ${size}px;">11</div>`,
+        iconSize: [size, size], // Taille dynamique
+        iconAnchor: [size / 2, size / 2] // Centré sur les coordonnées
+      });
+    }
+ //----------------------------------------------------------------------------------------------------------------------------------    
 // Position utilisateur---------------------------------------------------------------------------------------------------------
 // Localiser l'utilisateur
 map.locate({ setView: true, maxZoom: 16 });
