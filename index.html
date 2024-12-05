@@ -44,8 +44,12 @@
 <body>
   <div id="map"></div>
   <script>
+    // Declaration des variables de position du POI + Longuer Cone/Cercle
+    const LAT_POI = 51.040338;
+    const LONG_POI = 2.306949;
+    
     // Initialiser la carte
-    var map = L.map('map').setView([51.040338, 2.306949], 13); // Coordonnées de Paris
+    var map = L.map('map').setView([LAT_POI, LONG_POI], 13); // Coordonnées de POI
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19
     }).addTo(map);
@@ -127,7 +131,7 @@ map.on('locationerror', function(e) {
     ];
 
         // Ajout d'un CircleMarker
-    var circle = L.circle([51.040338, 2.306949], {
+    var circle = L.circle([LAT_POI, LONG_POI], {
       radius: 150, // Rayon en pixels
       color: 'red', // Couleur de la bordure
       weight: 4, // Épaisseur de la bordure
