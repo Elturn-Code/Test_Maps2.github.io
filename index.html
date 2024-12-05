@@ -17,6 +17,17 @@
       height: 20px; /* Hauteur fixe */
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     }
+    /* Style pour l'icône personnalisée */
+    .zoom-dependent-icon {
+      background-color: #007bff;
+      color: white;
+      text-align: center;
+      font-weight: bold;
+      border-radius: 50%;
+      line-height: 1;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+      transition: width 0.2s, height 0.2s, font-size 0.2s; /* Animation douce */
+    }
   </style>
 </head>
 <body>
@@ -42,7 +53,28 @@
     //var marker = L.marker([51.038969, 2.29598]).addTo(map);
     // Ajouter le marqueur à la carte
     L.marker([51.038969, 2.29598], { icon: customIcon }).addTo(map);
+ //----------------------------------------------------------------------------------------------------------------------------------
+    // Ajouter un marqueur à la carte avec une icône dépendant du zoom
+    var marker = L.marker([51.043818, 2.303612], { icon: createZoomDependentIcon(map.getZoom()) }).addTo(map);
+    // Mettre à jour l'icône lorsque le zoom change
+    map.on('zoomend', function () {
+      const zoom = map.getZoom();
+      marker.setIcon(createZoomDependentIcon(zoom));
+    });
+        // Fonction pour générer une icône avec une taille dépendant du zoom
+    function createZoomDependentIcon(zoom) {
+      // Taille de l'icône calculée dynamiquement
+      const size = Math.max(10, zoom * 5); // Exemple : taille minimale de 10, augmente avec le zoom
+      const fontSize = size / 3;
 
+      return L.divIcon({
+        className: 'zoom-dependent-icon',
+        html: `<div style="width: ${size}px; height: ${size}px; font-size: ${fontSize}px; line-height: ${size}px;">Zoom</div>`,
+        iconSize: [size, size], // Taille dynamique
+        iconAnchor: [size / 2, size / 2] // Centré sur les coordonnées
+      });
+    }
+ //----------------------------------------------------------------------------------------------------------------------------------    
     // Ajouter un triangle
     var triangleCoords = [
       [51.029827, 2.318048], // Premier point (sommet du triangle)
