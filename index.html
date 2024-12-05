@@ -86,6 +86,24 @@
       });
     }
  //----------------------------------------------------------------------------------------------------------------------------------    
+
+// Position utilisateur---------------------------------------------------------------------------------------------------------
+// Localiser l'utilisateur
+map.locate({ setView: true, maxZoom: 16 });
+
+map.on('locationfound', function(e) {
+    var userPosition = e.latlng; // Coordonnées de l'utilisateur
+    console.log("Position de l'utilisateur : ", userPosition.lat, userPosition.lng);
+
+    // Ajouter un marqueur à la position de l'utilisateur
+    L.marker(userPosition).addTo(map).bindPopup("Vous êtes ici !");
+});
+
+map.on('locationerror', function(e) {
+    console.error("Erreur de géolocalisation : ", e.message);
+});
+
+//----------------------------------------------------------------------------------------------------------------------------
     // Ajouter un triangle
     var triangleCoords = [
       [51.029827, 2.318048], // Premier point (sommet du triangle)
